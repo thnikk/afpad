@@ -12,9 +12,9 @@ It's got some rainbow leds keys.
 ## Resources
 Adafruit documents all of their libraries in the [CircuitPython documentation](https://docs.circuitpython.org/en/latest/docs/index.html). Look up specific libraries for more detail.
 
-[Keypad library](https://docs.circuitpython.org/en/latest/shared-bindings/keypad/index.html)
-[Keyboard library](https://docs.circuitpython.org/projects/hid/en/latest/api.html)
-[Keycodes](https://docs.circuitpython.org/projects/hid/en/latest/_modules/adafruit_hid/keycode.html)
-[Neopixel library](https://docs.circuitpython.org/projects/neopixel/en/latest/api.html?highlight=neopixel#neopixel-neopixel-strip-driver)
+- [Keypad library](https://docs.circuitpython.org/en/latest/shared-bindings/keypad/index.html)
+- [Keyboard library](https://docs.circuitpython.org/projects/hid/en/latest/api.html)
+- [Keycodes](https://docs.circuitpython.org/projects/hid/en/latest/_modules/adafruit_hid/keycode.html)
+- [Neopixel library](https://docs.circuitpython.org/projects/neopixel/en/latest/api.html?highlight=neopixel#neopixel-neopixel-strip-driver)
 
 For more basic resources, check out a site like [w3schools](https://www.w3schools.com/python/default.asp) for their python tutorials. There are some differences between Python and CircuitPython, but most of the basic tutorials will carry over.
