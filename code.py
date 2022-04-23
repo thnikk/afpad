@@ -38,7 +38,7 @@ while True:
     if (time.monotonic() - ledMillis) >= 0.020:
         ledMillis = time.monotonic() # Reset timer
         hue+=1 # Increment hue by 1
-        pixels.fill(colorwheel(hue % 255) # Get full RGB from hue value
+        pixels.fill(colorwheel(hue % 255)) # Get full RGB from hue value
         pixels.show() # Update LEDs
         logo[0] = (255,255,255) # Set logo color to white
         logo.show() # Update logo LED
