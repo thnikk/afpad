@@ -8,8 +8,8 @@ from adafruit_hid.keycode import Keycode
 # LED libraries
 import neopixel
 from rainbowio import colorwheel
-pixels = neopixel.NeoPixel(board.GP0, 2, brightness=1, auto_write=False)
-logo = neopixel.NeoPixel(board.GP12, 2, brightness=1, auto_write=False)
+pixels = neopixel.NeoPixel(board.GP0, 8, brightness=1, auto_write=False)
+logo = neopixel.NeoPixel(board.GP12, 1, brightness=1, auto_write=False)
 
 # Time (for LED timing)
 import time
