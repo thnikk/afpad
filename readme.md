@@ -2,7 +2,7 @@
 This is a basic firmware written for the Afpad using Circuitpython. I don't have the hardware and can't test the firmware, but it should work.
 
 ## Installation
-Download the bootloader from [Adafruit](https://circuitpython.org/board/seeeduino_xiao_rp2040/) and copy it to the xiao by holding down the bootsel button (the one with the B next to it) while plugging it in. Copy the UF2 bootloader to the "RP_RP2" removable drive and it will flash the new bootloader and remount itself as a CircuitPython device.
+Download the bootloader from [Adafruit](https://circuitpython.org/board/seeeduino_xiao_rp2040/) and copy it to the xiao by holding down the bootsel button (the one with the B next to it) while plugging it in. Copy the UF2 bootloader to the "RPI-RP2" removable drive and it will flash the new bootloader and remount itself as a CircuitPython device.
 
 Copy everything from this repository to the newly mounted CIRCUITPY device and it should update in real time.
 

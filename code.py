@@ -29,8 +29,8 @@ keycodes = [ Keycode.Z, Keycode.X, Keycode.C, Keycode.A, Keycode.S, Keycode.D, K
 
 
 # Millis timer (float) for LEDs
-ledMillis = 0;
-hue = 0;
+ledMillis = 0
+hue = 0
 
 while True:
 
