@@ -8,16 +8,11 @@ from adafruit_hid.keycode import Keycode
 # LED libraries
 import neopixel
 from rainbowio import colorwheel
-pixels = neopixel.NeoPixel(board.GP0, 8, brightness=1, auto_write=False)
-logo = neopixel.NeoPixel(board.GP12, 1, brightness=1, auto_write=False)
+pixels = neopixel.NeoPixel(board.D0, 8, brightness=1, auto_write=False)
+logo = neopixel.NeoPixel(board.NEOPIXEL, 1, brightness=1, auto_write=False)
 
 # Time (for LED timing)
 import time
-
-# Logo LED requires power from internal GP11 pin
-logo_power = digitalio.DigitalInOut(board.GP11)
-logo_power.direction = digitalio.Direction.OUTPUT
-logo_power.value = 1
 
 # Set pins for keys
 pins = ( board.D1, board.D2, board.D3, board.D4, board.D5, board.D6, board.D7, board.D8 )
@@ -27,6 +22,8 @@ keys = keypad.Keys(pins, value_when_pressed=False, pull=True, interval=0.020)
 keymap = { 0:7, 1:6, 2:5, 3:2, 4:3, 5:4, 6:0, 7:1 }
 keycodes = [ Keycode.Z, Keycode.X, Keycode.C, Keycode.A, Keycode.S, Keycode.D, Keycode.Q, Keycode.W ]
 
+# Initialize keyboard
+kbd = Keyboard(usb_hid.devices)
 
 # Millis timer (float) for LEDs
 ledMillis = 0
@@ -48,6 +45,7 @@ while True:
     if ev is not None:
         # Get keycode for key
         key = keycodes[keymap[ev.key_number]]
+        print(ev.key_number, ":", key)
         # Press or release on events
         if ev.pressed:
             kbd.press(key)
