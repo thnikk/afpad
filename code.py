@@ -20,7 +20,7 @@ keys = keypad.Keys(pins, value_when_pressed=False, pull=True, interval=0.020)
 
 # Map position  and keycodes
 keymap = { 0:7, 1:6, 2:5, 3:2, 4:3, 5:4, 6:0, 7:1 }
-keycodes = [ Keycode.Z, Keycode.X, Keycode.C, Keycode.A, Keycode.S, Keycode.D, Keycode.Q, Keycode.W ]
+keycodes = [ [Keycode.Z], [Keycode.X], [Keycode.C], [Keycode.A], [Keycode.S], [Keycode.D], [Keycode.Q], [Keycode.W] ]
 
 # Initialize keyboard
 kbd = Keyboard(usb_hid.devices)
@@ -43,11 +43,10 @@ while True:
     # Get new keypad events
     ev = keys.events.get()
     if ev is not None:
-        # Get keycode for key
-        key = keycodes[keymap[ev.key_number]]
-        print(ev.key_number, ":", key)
         # Press or release on events
         if ev.pressed:
-            kbd.press(key)
+            for key in keycodes[keymap[ev.key_number]]:
+                kbd.press(key)
         else:
-            kbd.release(key)
+            for key in keycodes[keymap[ev.key_number]]:
+                kbd.release(key)
