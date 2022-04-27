@@ -5,21 +5,23 @@ import usb_hid
 from adafruit_hid.keyboard import Keyboard, find_device
 from adafruit_hid.keycode import Keycode
 
+# Time (for LED timing)
+import time
+
 # LED libraries
 import neopixel
 from rainbowio import colorwheel
+# Initialize neopixels
 pixels = neopixel.NeoPixel(board.D0, 8, brightness=1, auto_write=False)
+# Initialize built-in neopixel
 logo = neopixel.NeoPixel(board.NEOPIXEL, 1, brightness=1, auto_write=False)
-
-# Time (for LED timing)
-import time
 
 # Set pins for keys
 pins = ( board.D1, board.D2, board.D3, board.D4, board.D5, board.D6, board.D7, board.D8 )
 keys = keypad.Keys(pins, value_when_pressed=False, pull=True, interval=0.020)
 
 # Map position  and keycodes
-keymap = { 0:7, 1:6, 2:5, 3:2, 4:3, 5:4, 6:0, 7:1 }
+keymap = [ 7, 6, 5, 2, 3, 4, 0, 1 ]
 keycodes = [ [Keycode.Z], [Keycode.X], [Keycode.C], [Keycode.A], [Keycode.S], [Keycode.D], [Keycode.Q], [Keycode.W] ]
 
 # Initialize keyboard
@@ -42,11 +44,15 @@ while True:
 
     # Get new keypad events
     ev = keys.events.get()
+    # If there's a new event
     if ev is not None:
-        # Press or release on events
+        # Press or release
         if ev.pressed:
-            for key in keycodes[keymap[ev.key_number]]:
+            # Iterate through keys and press/release all sub-keys for a given key
+            for key in keycodes[keymap.index(ev.key_number)]:
+                print("Pressing", key)
                 kbd.press(key)
         else:
-            for key in keycodes[keymap[ev.key_number]]:
+            for key in keycodes[keymap.index(ev.key_number)]:
+                print("Releasing", key)
                 kbd.release(key)
