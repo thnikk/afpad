@@ -4,6 +4,7 @@ import board
 import usb_hid
 from adafruit_hid.keyboard import Keyboard, find_device
 from adafruit_hid.keycode import Keycode
+from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS
 
 # Time (for LED timing)
 import time
@@ -22,10 +23,11 @@ keys = keypad.Keys(pins, value_when_pressed=False, pull=True, interval=0.020)
 
 # Map position  and keycodes
 keymap = [ 7, 6, 5, 2, 3, 4, 0, 1 ]
-keycodes = [ [Keycode.Z], [Keycode.X], [Keycode.C], [Keycode.A], [Keycode.S], [Keycode.D], [Keycode.Q], [Keycode.W] ]
+keycodes = [ [Keycode.Z], [Keycode.X], [Keycode.C, Keycode.LEFT_CONTROL], [Keycode.A], [Keycode.S], [Keycode.D], [Keycode.Q], [Keycode.W] ]
 
 # Initialize keyboard
 kbd = Keyboard(usb_hid.devices)
+layout = KeyboardLayoutUS(kbd)
 
 # Millis timer (float) for LEDs
 ledMillis = 0
@@ -46,13 +48,20 @@ while True:
     ev = keys.events.get()
     # If there's a new event
     if ev is not None:
-        # Press or release
-        if ev.pressed:
-            # Iterate through keys and press/release all sub-keys for a given key
-            for key in keycodes[keymap.index(ev.key_number)]:
-                print("Pressing", key)
-                kbd.press(key)
+        # And the pressed key matches the number
+        if keymap.index(ev.key_number) = 0:
+            # Do a thing on release
+            if ! ev.pressed:
+                layout.write('lol wtf?')
+
         else:
-            for key in keycodes[keymap.index(ev.key_number)]:
-                print("Releasing", key)
-                kbd.release(key)
+            # Press or release
+            if ev.pressed:
+                # Iterate through keys and press/release all sub-keys for a given key
+                for key in keycodes[keymap.index(ev.key_number)]:
+                    print("Pressing", key)
+                    kbd.press(key)
+            else:
+                for key in keycodes[keymap.index(ev.key_number)]:
+                    print("Releasing", key)
+                    kbd.release(key)
