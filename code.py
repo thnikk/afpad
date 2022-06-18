@@ -43,6 +43,8 @@ hue = 0
 count = 0
 countMillis = 0
 
+idleMillis = time.monotonic()
+
 while True:
 
     # Update once every 20 milliseconds
@@ -50,8 +52,12 @@ while True:
         ledMillis = time.monotonic() # Reset timer
         hue+=1 # Increment hue by 1
         pixels.fill(colorwheel(hue % 255)) # Get full RGB from hue value
-        pixels.show() # Update LEDs
         logo[0] = (colorwheel(hue % 255)) # Set logo color to white
+        # Uncomment for LED timeout
+        # if (time.monotonic() - idleMillis) >= 30:
+            # pixels.fill(0x000000)
+            # logo[0] = 0x000000
+        pixels.show() # Update LEDs
         logo.show() # Update logo LED
 
     # Uncomment to see loop speed over serial
@@ -65,6 +71,8 @@ while True:
     ev = keys.events.get()
     # If there's a new event
     if ev is not None:
+        # Reset idle timer
+        idleMillis = time.monotonic()
         # And the pressed key matches the number
         if keymap.index(ev.key_number) is 8:
             # Do a thing on release
