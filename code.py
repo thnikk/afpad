@@ -40,6 +40,9 @@ layout = KeyboardLayoutUS(kbd)
 ledMillis = 0
 hue = 0
 
+count = 0
+countMillis = 0
+
 while True:
 
     # Update once every 20 milliseconds
@@ -50,6 +53,13 @@ while True:
         pixels.show() # Update LEDs
         logo[0] = (colorwheel(hue % 255)) # Set logo color to white
         logo.show() # Update logo LED
+
+    # Uncomment to see loop speed over serial
+    # count+=1
+    # if (time.monotonic() - countMillis) > 1:
+        # countMillis = time.monotonic()
+        # print(count)
+        # count = 0
 
     # Get new keypad events
     ev = keys.events.get()
