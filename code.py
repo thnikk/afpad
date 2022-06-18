@@ -59,7 +59,12 @@ while True:
         if keymap.index(ev.key_number) is 8:
             # Do a thing on release
             if not ev.pressed:
-                layout.write('lol wtf?')
+                layout.write('This types a string')
+        
+        else if keymap.index(ev.key_number) is 9:
+            # Do a thing on release
+            if not ev.pressed:
+                layout.write('This also types a string')
 
         else:
             # Press or release
