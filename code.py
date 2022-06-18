@@ -23,7 +23,14 @@ keys = keypad.Keys(pins, value_when_pressed=False, pull=True, interval=0.020)
 
 # Map position  and keycodes
 keymap = [ 1, 0, 2, 3, 4, 7, 6, 5 ]
-keycodes = [ [Keycode.0], [Keycode.1], [Keycode.2], [Keycode.3], [Keycode.4], [Keycode.5], [Keycode.6], [Keycode.7] ]
+keycodes = [ [Keycode.LEFT_CONTROL, Keycode.C], [Keycode.LEFT_CONTROL, Keycode.V], [Keycode.LEFT_ARROW], [Keycode.LEFT_CONTROL, Keycode.LEFT_SHIFT], [Keycode.RIGHT_ARROW], [Keycode.FIVE], [Keycode.LEFT_GUI, Keycode.LEFT_SHIFT, Keycode.S], [Keycode.SEVEN] ]
+"""
+Physical keymap
+[ 0, 1, X ]
+[ 2, 3, 4 ]
+[ 5, 6, 7 ]
+(X is where the xiao and LED are)
+"""
 
 # Initialize keyboard
 kbd = Keyboard(usb_hid.devices)
@@ -41,7 +48,7 @@ while True:
         hue+=1 # Increment hue by 1
         pixels.fill(colorwheel(hue % 255)) # Get full RGB from hue value
         pixels.show() # Update LEDs
-        logo[0] = (255,255,255) # Set logo color to white
+        logo[0] = (colorwheel(hue % 255)) # Set logo color to white
         logo.show() # Update logo LED
 
     # Get new keypad events
@@ -59,9 +66,9 @@ while True:
             if ev.pressed:
                 # Iterate through keys and press/release all sub-keys for a given key
                 for key in keycodes[keymap.index(ev.key_number)]:
-                    print("Pressing", key)
+                    print("Pressing", keymap[ev.key_number])
                     kbd.press(key)
             else:
                 for key in keycodes[keymap.index(ev.key_number)]:
-                    print("Releasing", key)
+                    print("Releasing", keymap[ev.key_number])
                     kbd.release(key)
