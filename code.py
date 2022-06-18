@@ -61,7 +61,7 @@ while True:
             if not ev.pressed:
                 layout.write('This types a string')
         
-        else if keymap.index(ev.key_number) is 9:
+        elif keymap.index(ev.key_number) is 9:
             # Do a thing on release
             if not ev.pressed:
                 layout.write('This also types a string')
