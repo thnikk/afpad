@@ -23,7 +23,7 @@ keys = keypad.Keys(pins, value_when_pressed=False, pull=True, interval=0.020)
 
 # Map position  and keycodes
 keymap = [ 1, 0, 2, 3, 4, 7, 6, 5 ]
-keycodes = [ [Keycode.Q], [Keycode.W], [Keycode.A], [Keycode.S], [Keycode.D], [Keycode.Z], [Keycode.X], [Keycode.C]  ]
+keycodes = [ [Keycode.0], [Keycode.1], [Keycode.2], [Keycode.3], [Keycode.4], [Keycode.5], [Keycode.6], [Keycode.7] ]
 
 # Initialize keyboard
 kbd = Keyboard(usb_hid.devices)
