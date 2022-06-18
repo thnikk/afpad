@@ -22,13 +22,8 @@ pins = ( board.D1, board.D2, board.D3, board.D4, board.D5, board.D6, board.D7, b
 keys = keypad.Keys(pins, value_when_pressed=False, pull=True, interval=0.020)
 
 # Map position  and keycodes
-keymap = [ 7, 6, 5, 2, 3, 4, 0, 1 ]
-keycodes = [ [Keycode.Z], [Keycode.X], [Keycode.C, Keycode.LEFT_CONTROL], [Keycode.A], [Keycode.S], [Keycode.D], [Keycode.Q], [Keycode.W] ]
-
-# Since keymap is kinda confusing, here's where the physical keys are
-# [ 0, 1, X ]
-# [ 2, 3, 4 ]
-# [ 7, 6, 5 ]
+keymap = [ 1, 0, 2, 3, 4, 7, 6, 5 ]
+keycodes = [ [Keycode.Q], [Keycode.W], [Keycode.A], [Keycode.S], [Keycode.D], [Keycode.Z], [Keycode.X], [Keycode.C]  ]
 
 # Initialize keyboard
 kbd = Keyboard(usb_hid.devices)
@@ -54,7 +49,7 @@ while True:
     # If there's a new event
     if ev is not None:
         # And the pressed key matches the number
-        if keymap.index(ev.key_number) is 0:
+        if keymap.index(ev.key_number) is 8:
             # Do a thing on release
             if not ev.pressed:
                 layout.write('lol wtf?')
