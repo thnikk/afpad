@@ -53,12 +53,16 @@ while True:
         hue+=1 # Increment hue by 1
         pixels.fill(colorwheel(hue % 255)) # Get full RGB from hue value
         logo[0] = (colorwheel(hue % 255)) # Set logo color to white
-        # Uncomment for LED timeout
-        # if (time.monotonic() - idleMillis) >= 30:
-            # pixels.fill(0x000000)
-            # logo[0] = 0x000000
         pixels.show() # Update LEDs
         logo.show() # Update logo LED
+    
+    # Uncomment for LED timeout
+    # if (time.monotonic() - idleMillis) >= 30:
+        # pixels.brightness = 0
+        # logo.brightness = 0
+    # else:
+        # pixels.brightness = 1
+        # logo.brightness = 1
 
     # Uncomment to see loop speed over serial
     # count+=1
